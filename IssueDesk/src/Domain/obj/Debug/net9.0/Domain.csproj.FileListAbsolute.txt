@@ -1,0 +1,12 @@
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/bin/Debug/net9.0/Domain.deps.json
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/bin/Debug/net9.0/Domain.dll
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/bin/Debug/net9.0/Domain.pdb
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.csproj.CoreCompileInputs.cache
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.sourcelink.json
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.dll
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/refint/Domain.dll
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.pdb
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/ref/Domain.dll
