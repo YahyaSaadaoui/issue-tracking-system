@@ -13,9 +13,12 @@ public sealed record TicketFilter(
 
 public interface ITicketRepository
 {
-      Task AddAsync(Ticket ticket, CancellationToken ct = default);
-      ValueTask<Ticket?> GetByIdAsync(Guid id, CancellationToken ct = default);
+    Task AddAsync(Ticket ticket, CancellationToken ct = default);
+    ValueTask<Ticket?> GetByIdAsync(Guid id, CancellationToken ct = default);
 
-      Task<(IReadOnlyList<Ticket> Items, int Total)> GetByProjectAsync(
-          Guid projectId, TicketFilter filter, CancellationToken ct = default);
+    Task<(IReadOnlyList<Ticket> Items, int Total)> GetByProjectAsync(
+        Guid projectId, TicketFilter filter, CancellationToken ct = default);
+
+    Task AddCommentAsync(Comment comment, CancellationToken ct = default);
+    Task TouchAsync(Guid ticketId, CancellationToken ct = default);
 }

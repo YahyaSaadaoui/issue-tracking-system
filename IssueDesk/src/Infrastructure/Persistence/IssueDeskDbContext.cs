@@ -13,6 +13,7 @@ public class IssueDeskDbContext : DbContext
 
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
+            // Project
             modelBuilder.Entity<Project>(b =>
             {
                   b.ToTable("Projects");
@@ -21,12 +22,16 @@ public class IssueDeskDbContext : DbContext
                   b.Property(x => x.Key).IsRequired().HasMaxLength(10);
                   b.Property(x => x.CreatedAt).IsRequired();
 
+                  b.HasIndex(x => x.Name).IsUnique();
+                  b.HasIndex(x => x.Key).IsUnique();
+
                   b.HasMany(x => x.Tickets)
-               .WithOne(t => t.Project!)
-               .HasForeignKey(t => t.ProjectId)
-               .OnDelete(DeleteBehavior.Cascade);
+           .WithOne(t => t.Project!)
+           .HasForeignKey(t => t.ProjectId)
+           .OnDelete(DeleteBehavior.Cascade);
             });
 
+            // Ticket
             modelBuilder.Entity<Ticket>(b =>
             {
                   b.ToTable("Tickets");
@@ -38,6 +43,7 @@ public class IssueDeskDbContext : DbContext
                   b.Property(x => x.UpdatedAt).IsRequired();
             });
 
+            // Comment
             modelBuilder.Entity<Comment>(b =>
             {
                   b.ToTable("Comments");
@@ -47,9 +53,10 @@ public class IssueDeskDbContext : DbContext
                   b.Property(x => x.CreatedAt).IsRequired();
 
                   b.HasOne(c => c.Ticket!)
-               .WithMany(t => t.Comments)
-               .HasForeignKey(c => c.TicketId)
-               .OnDelete(DeleteBehavior.Cascade);
+           .WithMany(t => t.Comments)
+           .HasForeignKey(c => c.TicketId)
+           .OnDelete(DeleteBehavior.Cascade);
             });
       }
+
 }
