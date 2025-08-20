@@ -38,10 +38,9 @@ public sealed class CreateTicketHandler : IRequestHandler<CreateTicketCommand, T
             var project = await _projects.GetByIdAsync(request.ProjectId, ct);
             if (project is null) throw new KeyNotFoundException("Project not found.");
 
-            var ticket = Ticket.Create(request.ProjectId, request.Title, request.Description, request.Priority);
-            await _tickets.AddAsync(ticket, ct);
+            var t = Ticket.Create(request.ProjectId, request.Title, request.Description, request.Priority);
+            await _tickets.AddAsync(t, ct);
             await _uow.SaveChangesAsync(ct);
-
-            return ticket.ToDto();
+            return t.ToDto();
       }
 }

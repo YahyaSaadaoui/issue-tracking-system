@@ -10,3 +10,4 @@
 /workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/refint/Domain.dll
 /workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.pdb
 /workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/ref/Domain.dll
+/workspaces/issue-tracking-system/IssueDesk/src/Domain/obj/Debug/net9.0/Domain.csproj.AssemblyReference.cache

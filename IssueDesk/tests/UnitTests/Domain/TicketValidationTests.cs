@@ -15,7 +15,7 @@ public class TicketValidationTests
             act.Should().Throw<DomainException>();
       }
 
-      [Fact]
+      [Fact]      
       public void Comment_Body_Too_Short_Throws()
       {
             var t = Ticket.Create(Guid.NewGuid(), "Valid title", null, TicketPriority.Low);

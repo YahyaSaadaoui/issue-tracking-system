@@ -1,11 +1,19 @@
+using IssueDesk.Domain.Abstractions;
 using IssueDesk.Domain.Entities;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace IssueDesk.Infrastructure.Persistence;
 
 public class IssueDeskDbContext : DbContext
 {
-      public IssueDeskDbContext(DbContextOptions<IssueDeskDbContext> options) : base(options) { }
+      private readonly IMediator? _mediator;
+
+      public IssueDeskDbContext(DbContextOptions<IssueDeskDbContext> options, IMediator? mediator = null)
+          : base(options)
+      {
+            _mediator = mediator;
+      }
 
       public DbSet<Project> Projects => Set<Project>();
       public DbSet<Ticket> Tickets => Set<Ticket>();
@@ -22,13 +30,10 @@ public class IssueDeskDbContext : DbContext
                   b.Property(x => x.Key).IsRequired().HasMaxLength(10);
                   b.Property(x => x.CreatedAt).IsRequired();
 
-                  b.HasIndex(x => x.Name).IsUnique();
-                  b.HasIndex(x => x.Key).IsUnique();
-
                   b.HasMany(x => x.Tickets)
-           .WithOne(t => t.Project!)
-           .HasForeignKey(t => t.ProjectId)
-           .OnDelete(DeleteBehavior.Cascade);
+               .WithOne(t => t.Project!)
+               .HasForeignKey(t => t.ProjectId)
+               .OnDelete(DeleteBehavior.Cascade);
             });
 
             // Ticket
@@ -53,10 +58,33 @@ public class IssueDeskDbContext : DbContext
                   b.Property(x => x.CreatedAt).IsRequired();
 
                   b.HasOne(c => c.Ticket!)
-           .WithMany(t => t.Comments)
-           .HasForeignKey(c => c.TicketId)
-           .OnDelete(DeleteBehavior.Cascade);
+               .WithMany(t => t.Comments)
+               .HasForeignKey(c => c.TicketId)
+               .OnDelete(DeleteBehavior.Cascade);
             });
       }
 
+      public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+      {
+            var result = await base.SaveChangesAsync(cancellationToken);
+
+            // If mediator isn't available (design-time/migrations), skip event publishing
+            if (_mediator is null) return result;
+
+            var entitiesWithEvents = ChangeTracker
+                .Entries<IHasDomainEvents>()
+                .Select(e => e.Entity)
+                .Where(e => e.DomainEvents.Any())
+                .ToArray();
+
+            var events = entitiesWithEvents.SelectMany(e => e.DomainEvents).ToList();
+
+            foreach (var entity in entitiesWithEvents)
+                  entity.ClearDomainEvents();
+
+            foreach (var domainEvent in events)
+                  await _mediator.Publish(domainEvent, cancellationToken);
+
+            return result;
+      }
 }
