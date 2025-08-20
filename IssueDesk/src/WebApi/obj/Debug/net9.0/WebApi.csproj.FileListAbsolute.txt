@@ -184,3 +184,13 @@
 /workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Abstractions.dll
 /workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Physical.dll
 /workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Microsoft.Extensions.FileSystemGlobbing.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.AspNetCore.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Extensions.Hosting.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Extensions.Logging.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Formatting.Compact.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Settings.Configuration.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Sinks.Console.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Sinks.Debug.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Serilog.Sinks.File.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.InMemory.dll
