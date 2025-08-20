@@ -1,4 +1,6 @@
+using IssueDesk.Application.Abstractions;
 using IssueDesk.Infrastructure.Persistence;
+using IssueDesk.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,11 @@ public static class DependencyInjection
             {
                   options.UseSqlServer(connectionString, sql => sql.EnableRetryOnFailure());
             });
+
+            // Repositories + UoW
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<IUnitOfWork, EfUnitOfWork>();
 
             return services;
       }

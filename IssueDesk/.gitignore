@@ -1,0 +1,73 @@
+# OS junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs & temp
+*.log
+logs/
+tmp/
+temp/
+
+# .NET / C#
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userprefs
+*.csproj.user
+.vs/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.opencover.xml
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# NuGet (local)
+packages/
+*.nupkg
+*.snupkg
+nuget.exe
+
+# EF Core
+# (Keep migrations tracked!)
+!src/**/Migrations/
+
+# Node / Frontend
+node_modules/
+**/node_modules/
+dist/
+build/
+.nyc_output/
+coverage/
+*.tsbuildinfo
+.next
+.nuxt
+.out/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# VS Code / Codespaces
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Archives / artifacts
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# SQLite/Local DBs (not used, just in case)
+*.db
+*.sqlite
+*.sqlite3
