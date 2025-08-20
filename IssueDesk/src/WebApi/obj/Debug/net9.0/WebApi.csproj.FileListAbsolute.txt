@@ -93,3 +93,5 @@
 /workspaces/issue-tracking-system/IssueDesk/src/WebApi/obj/Debug/net9.0/WebApi.pdb
 /workspaces/issue-tracking-system/IssueDesk/src/WebApi/obj/Debug/net9.0/WebApi.genruntimeconfig.cache
 /workspaces/issue-tracking-system/IssueDesk/src/WebApi/obj/Debug/net9.0/ref/WebApi.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/FluentValidation.dll
+/workspaces/issue-tracking-system/IssueDesk/src/WebApi/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "IvEh8xYtnhs=",
+  "dgSpecHash": "cgpkhnDxlPk=",
   "success": true,
   "projectFilePath": "/workspaces/issue-tracking-system/IssueDesk/src/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
     "/home/codespace/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/codespace/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
+    "/home/codespace/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.0.0/fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
     "/home/codespace/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
     "/home/codespace/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/home/codespace/.nuget/packages/microsoft.aspnetcore.openapi/9.0.8/microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
