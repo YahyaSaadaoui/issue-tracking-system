@@ -71,5 +71,5 @@ await db.Database.EnsureCreatedAsync();
 }
 
 app.Run();
-
+builder.Services.AddLogging(logging => logging.AddConsole());
 public partial class Program { }
