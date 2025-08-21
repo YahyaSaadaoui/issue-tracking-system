@@ -1,8 +1,6 @@
-
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: issuedesk-sqlserver
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Your_password123
@@ -15,10 +13,10 @@ services:
       retries: 30
 
   api:
+    container_name: issuedesk-api
     build:
       context: ./IssueDesk
       dockerfile: ./src/WebApi/Dockerfile
-    container_name: issuedesk-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:8080
@@ -28,6 +26,12 @@ services:
         condition: service_healthy
     ports:
       - "5080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 10s
 
   web:
     build:
@@ -39,5 +43,5 @@ services:
     environment:
       - VITE_PROXY_TARGET=http://api:8080
     depends_on:
-      - api
-
+      api:
+        condition: service_healthy
