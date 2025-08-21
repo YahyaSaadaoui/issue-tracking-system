@@ -13,7 +13,7 @@ services:
       retries: 30
 
   api:
-    container_name: issuedesk-api
+    # ⚠️ remove container_name so the DNS name is simply "api"
     build:
       context: ./IssueDesk
       dockerfile: ./src/WebApi/Dockerfile
@@ -27,11 +27,11 @@ services:
     ports:
       - "5080:8080"
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/health || exit 1"]
       interval: 5s
       timeout: 3s
       retries: 30
-      start_period: 10s
+      start_period: 15s   # a touch more grace before first check
 
   web:
     build:
@@ -41,6 +41,7 @@ services:
     ports:
       - "5173:5173"
     environment:
+      # ✅ point Vite proxy at the *service name*
       - VITE_PROXY_TARGET=http://api:8080
     depends_on:
       api:
