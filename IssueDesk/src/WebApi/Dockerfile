@@ -18,9 +18,12 @@ RUN dotnet publish src/WebApi/WebApi.csproj -c Release -o /app/publish
 
 # Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
-WORKDIR /app
 
-# Kestrel inside the container on 8080
+# ✅ install curl for healthcheck
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+      && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
 ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 EXPOSE 8080
 
