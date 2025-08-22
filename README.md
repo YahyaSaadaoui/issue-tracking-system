@@ -10,8 +10,6 @@ IssueDesk is a compact yet practical issue and help tracking application. It ser
 > * **Frontend:** React 18, Vite, TypeScript, React Query, Axios, Zod, Tailwind (shadcn/ui)
 > * **DevOps:** Docker Compose (for API, DB, and Web), xUnit for testing
 
----
-
 ## Key Features
 
 * Organize tickets by projects, each with a unique name and key.
@@ -21,8 +19,6 @@ IssueDesk is a compact yet practical issue and help tracking application. It ser
 * Uses **EF Core code-first migrations** for database management.
 * **Swagger/OpenAPI** integration, featuring Problem Details for error handling.
 * A **React**-based user interface with filtering, pagination, dialogs, and states for loading/error.
-
----
 
 ## Getting Started
 
@@ -61,8 +57,6 @@ docker compose up -d --build
 
 **First, run SQL Server in a Docker container:**
 
-**code**Bash
-
 ```
 docker run --name issuedesk-sql \
   -e ACCEPT_EULA=Y -e SA_PASSWORD=Your_password123 \
@@ -71,8 +65,6 @@ docker run --name issuedesk-sql \
 
 **Next, apply the database migrations:**
 
-**code**Bash
-
 ```
 cd IssueDesk
 dotnet ef database update -p src/Infrastructure -s src/WebApi
@@ -80,16 +72,12 @@ dotnet ef database update -p src/Infrastructure -s src/WebApi
 
 **To run the API:**
 
-**code**Bash
-
 ```
 dotnet run --project IssueDesk/src/WebApi
 # API will be available at http://localhost:5080/swagger
 ```
 
 **To run the Frontend:**
-
-**code**Bash
 
 ```
 cd IssueDesk/frontend
@@ -99,8 +87,6 @@ npm run dev
 ```
 
 **The development server is configured to proxy** **/api** **requests to** **http://localhost:5080**. This can be overridden:
-
-**code**Bash
 
 ```
 # In IssueDesk/frontend/.env.development (this is optional)
@@ -129,8 +115,6 @@ VITE_PROXY_TARGET=http://localhost:5080
 
 **Create a new project:**
 
-**code**Bash
-
 ```
 curl -X POST http://localhost:5080/api/projects \
   -H "Content-Type: application/json" \
@@ -138,8 +122,6 @@ curl -X POST http://localhost:5080/api/projects \
 ```
 
 **Create a new ticket:**
-
-**code**Bash
 
 ```
 curl -X POST http://localhost:5080/api/tickets \
@@ -154,8 +136,6 @@ curl -X POST http://localhost:5080/api/tickets \
 
 **Filter tickets:**
 
-**code**Bash
-
 ```
 curl "http://localhost:5080/api/projects/<PROJECT_GUID>/tickets?status=InProgress&priority=High&page=1&pageSize=10"
 ```
@@ -163,8 +143,6 @@ curl "http://localhost:5080/api/projects/<PROJECT_GUID>/tickets?status=InProgres
 ---
 
 ## Architectural Design
-
-**code**Code
 
 ```
 src/
@@ -199,8 +177,6 @@ tests/
 
 **Development Commands:**
 
-**code**Bash
-
 ```
 cd IssueDesk/frontend
 npm ci
@@ -213,8 +189,6 @@ npm run build      # Creates a production build
 ## Testing
 
 **To run all tests, execute:**
-
-**code**Bash
 
 ```
 dotnet test
@@ -231,8 +205,6 @@ dotnet test
 
 **The API uses** **ConnectionStrings:DefaultConnection**. In a Docker environment, it's injected through **docker-compose.yml**:
 
-**code**Code
-
 ```
 Server=sqlserver,1433;Database=IssueDeskDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True;Encrypt=False;
 ```
@@ -244,15 +216,11 @@ Server=sqlserver,1433;Database=IssueDeskDb;User Id=sa;Password=Your_password123;
 * **Health Check:** **GET /health** **→** **{ "status": "ok" }**
 * **Serilog** **logs to the console; Docker logs will display startup information and EF migration details.**
 
----
-
 ## Troubleshooting Guide
 
 **API container is "unhealthy" or exits with a** **PendingModelChangesWarning**
 
 * **You may need to add and apply migrations:**
-
-**code**Bash
 
 ```
 cd IssueDesk
@@ -271,11 +239,7 @@ docker compose up -d --build
 * **The Docker Compose file includes a health check; the initial boot might take 10–20 seconds. Please try again once it's healthy:**
   docker inspect --format='{{.State.Health.Status}}' issue-tracking-system-sqlserver-1
 
----
-
 ## Repository Scripts & Useful Commands
-
-**code**Bash
 
 ```
 # Build the entire solution
@@ -291,16 +255,10 @@ dotnet ef migrations add <Name> -p IssueDesk/src/Infrastructure -s IssueDesk/src
 dotnet ef database update -p IssueDesk/src/Infrastructure -s IssueDesk/src/WebApi
 ```
 
----
-
 ## License
 
 **This project is licensed under the MIT License — see the** [LICENSE](https://www.google.com/url?sa=E&q=.%2FLICENSE) **file for details.**
 
----
-
 ## Additional Notes
 
 **This repository contains my implementation of a small-scale issue tracker, designed to demonstrate Clean Architecture, CQRS, and a modern React UI. While the application's scope is intentionally limited, it is built with production standards in mind, incorporating validations, events, migrations, Problem Details, and a component-based, accessible frontend.**
-
-**Contributions and suggestions for improvement are always welcome!**
