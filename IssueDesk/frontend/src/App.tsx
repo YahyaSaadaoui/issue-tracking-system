@@ -1,15 +1,14 @@
-import { Link, Outlet } from 'react-router-dom'
+// IssueDesk/frontend/src/App.tsx
+import { Outlet } from "react-router-dom";
+import { TopNav } from "@/components/layout/TopNav";
 
 export default function App() {
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: 16, fontFamily: 'system-ui, sans-serif' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h1 style={{ margin: 0 }}>IssueDesk</h1>
-        <nav style={{ display: 'flex', gap: 12 }}>
-          <Link to="/">Projects</Link>
-        </nav>
-      </header>
-      <Outlet />
+    <div className="min-h-dvh bg-background text-foreground">
+      <TopNav />
+      <main className="container mx-auto px-4 py-6">
+        <Outlet />
+      </main>
     </div>
-  )
+  );
 }
