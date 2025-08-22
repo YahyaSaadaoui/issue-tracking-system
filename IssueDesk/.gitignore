@@ -71,3 +71,18 @@ coverage/
 *.db
 *.sqlite
 *.sqlite3
+
+node_modules/
+.next/
+dist/
+build/
+coverage/
+.lock-wscript
+# env & logs
+.env
+.env.*
+*.log
+# OS/editor
+.DS_Store
+*.swp
+EOF
