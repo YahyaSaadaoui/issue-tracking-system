@@ -1,14 +1,21 @@
+# Node / Next
 node_modules/
 .next/
+out/
+# Build artifacts
 dist/
 build/
 coverage/
-.lock-wscript
-# env & logs
+# .NET
+**/bin/
+**/obj/
+**/TestResults/
+# Env & secrets
 .env
 .env.*
+*.pfx
+*.snk
+# Logs & OS/editor
 *.log
-# OS/editor
 .DS_Store
 *.swp
-EOF
